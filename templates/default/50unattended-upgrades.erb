@@ -19,6 +19,10 @@ Unattended-Upgrade::Package-Blacklist {
 // must be installed or anything that provides /usr/bin/mail.
 <%= node['unattended-upgrades']['send_email'] ? "" : "// " %>Unattended-Upgrade::Mail "<%= node['unattended-upgrades']['email_address'] %>";
 
+// Set this value to "true" to get emails only on errors. Default
+// is to always send a mail if Unattended-Upgrade::Mail is set
+Unattended-Upgrade::MailOnlyOnError "<%= node['unattended-upgrades']['mail_only_on_error'] ? "true" : "false" %>";
+
 // Do automatic removal of new unused dependencies after the upgrade
 // (equivalent to apt-get autoremove)
 Unattended-Upgrade::Remove-Unused-Dependencies "<%= node['unattended-upgrades']['auto_remove'] ? "true" : "false" %>";
